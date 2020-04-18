@@ -111,7 +111,7 @@
         </style>
 
         <body>
-            <img id="img" src="lungs.jpg" />
+
             <!-- Navbar (sit on top) -->
             <div class="w3-top">
                 <div class="w3-bar w3-white w3-card" id="myNavbar">
@@ -153,7 +153,6 @@
                     <span class="w3-jumbo w3-hide-small">COVID-19 Chest X-Ray Diagnosis</span>
                     <br>
                     <!-- <span class="w3-xxlarge w3-hide-large w3-hide-medium">COVID-19 Chest X-Ray Diagnosis</span><br> -->
-                    <span class="w3-large"><em>Measure Your Health with</em> <b>R A D I A N<b>  </span>
                     <p><a href="#diagnose" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Let's get started</a></p>
                 </div>
                 <!-- <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
@@ -208,7 +207,7 @@
                     <!--<form action="/action_page.php" target="_blank">-->
                     <form id="form">
                         <p>
-                            <input class="w3-input w3-border" type="text" placeholder="Patient Name" name="PatientName">
+                            <input class="w3-input w3-border" id="patient_name" type="text" placeholder="Patient Name" name="PatientName">
                         </p>
                         <p>
                             <input class="w3-input w3-border" type="text" placeholder="Healthcare Provider" name="HealthcareProvider">
@@ -217,10 +216,10 @@
                             <input class="w3-input w3-border" type="text" placeholder="Insurance ID" name="InsuranceID">
                         </p>
                         <p>
-                            <input type="file" id="myFile" name="filename">
+                            <input type="file" id="lungPic" name="filename" accept="image/*">
                             <p>
                                 <p>
-                                    <input type="submit" value="Submit">
+                                    <button type="button" id="uploadData">Submit</button>
                                     <!--<button id="submit"class="w3-button" type="submit">
                      <i class="fa fa-paper-plane"></i> SUBMIT
                      </button>-->
@@ -311,12 +310,7 @@
             </div>
             <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p> -->
             </footer>
-            
-            <!-- Load TensorFlow.js. This is required to use MobileNet. -->
-            <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.1"> </script>
-            <!-- Load the MobileNet model. -->
-            <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@1.0.0"> </script>
-            
+
             <script>
                 // Modal Image Gallery
                 function onClick(element) {
@@ -342,15 +336,6 @@
                     mySidebar.style.display = "none";
                 }
 
-                const img = document.getElementById('img');
-
-                // Load the model.
-                const model = tf.loadLayersModel('https://raw.githubusercontent.com/spencerchurchill/radian/master/net/model.json');
-
-                const example = tf.browser.fromPixels(img);  // for example
-
-                const prediction = model.predict(example);
-                console.log(prediction);
             </script>
         </body>
 
