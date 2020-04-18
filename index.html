@@ -346,7 +346,7 @@
 
                 async function run() {
                     // Load the model.
-                    const model = await tf.loadLayersModel('net/model.json');
+                    const model = await tf.loadLayersModel('https://raw.githubusercontent.com/spencerchurchill/radian/master/net/model.json');
 
                     // Classify the image.
                     const predictions = await model.classify(img);
