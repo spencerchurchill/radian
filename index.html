@@ -344,26 +344,13 @@
 
                 const img = document.getElementById('img');
 
-                async function run() {
-                    // Load the model.
-                    const model = await tf.loadLayersModel('https://raw.githubusercontent.com/spencerchurchill/radian/master/net/model.json');
+                // Load the model.
+                const model = tf.loadLayersModel('https://raw.githubusercontent.com/spencerchurchill/radian/master/net/model.json');
 
-                    // Classify the image.
-                    const predictions = await model.classify(img);
-                    console.log('Predictions');
-                    console.log(predictions);
+                const example = tf.browser.fromPixels(img);  // for example
 
-                    // Get the logits.
-                    const logits = model.infer(img);
-                    console.log('Logits');
-                    logits.print(true);
-
-                    // Get the embedding.
-                    const embedding = model.infer(img, true);
-                    console.log('Embedding');
-                    embedding.print(true);
-                }
-                run();
+                const prediction = model.predict(example);
+                console.log(prediction);
             </script>
         </body>
 
